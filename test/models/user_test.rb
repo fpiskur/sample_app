@@ -48,4 +48,17 @@ class UserTest < ActiveSupport::TestCase
       refute @user.valid?, "#{invalid_address} should be invalid"
     end
   end
+
+  test "email addresses should be unique" do
+    duplicate_user = @user.dup
+    @user.save
+    refute duplicate_user.valid?
+  end
+
+  test "email addresses should be saved as lowercase" do
+    mixed_case_email = "Foo@ExAMPle.CoM"
+    @user.email = mixed_case_email
+    @user.save
+    assert_equal mixed_case_email.downcase, @user.reload.email
+  end
 end
