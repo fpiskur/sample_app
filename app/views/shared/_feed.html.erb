@@ -2,12 +2,12 @@
   <ol class="microposts">
     <%= render @feed_items %>
   </ol>
-  <%= will_paginate @feed_items %>
+  <!-- will_paginate @feed_items -->
   <!-- If there was no route for '/microposts' defined, clicking the page button
   after invalid micropost input (/microposts?page=2) would result in an error
   because there is no index action in Microposts controller. To solve it (apart
-  from adding a route '/microposts' in routes.rb) you can do:
+  from adding a route '/microposts' in routes.rb) you can do: -->
 
-  will_paginate @feed_items, params: { controller: :static_pages,
-                                       action:     :home } -->
+  <%= will_paginate @feed_items, params: { controller: :static_pages,
+                                           action:     :home } %>
 <% end %>
